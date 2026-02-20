@@ -1,16 +1,17 @@
-HBURG ?= /usr/bin/hburg
+CPSB ?= /usr/bin/cpsb
 
 
 	
 make-all: 
-	cd ./packages/; \
+	cd ./public/packages/; \
 		for package in *.hb; do \
-			$(HBURG) make $$package; \
+			$(CPSB) make $$package; \
 		done
 
 build:
-	cd ./packages && $(HBURG) build 
+	cd ./public/packages && $(CPSB) build && mv index index.b3 ../
 
 
 clean: 
-	cd ./packages && rm -f *.bin *.hcl *.hash
+	cd ./public/packages && rm -f *.bin *.hcl *.hash
+	rm -f ./public/index ./public/index.b3
